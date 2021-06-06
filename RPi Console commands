@@ -1,0 +1,24 @@
+----- Stop the default GPSD if any
+sudo systemctl stop gpsd
+sudo systemctl stop gpsd.socket
+----- Find Pi's IP address
+hostname -I
+----- update the Pi as nice to follow practice
+sudo apt-get update
+sudo apt-get install gpsd gpsd-clients python-gps
+
+----- Start listener manually or add that line to the /etc/default/gpsd. Use udp://*:11123 
+----- instead of IP address to make it work with any random IP different networks generate
+gpsd -N udp://192.168.1.102:11123
+sudo nano  /etc/default/gpsd
+
+----- Start the gpsd
+sudo systemctl start gpsd
+sudo systemctl start gpsd.socket
+
+----- Print the GPS data on the console
+cgps
+
+----- Auto run the proejct.py when the RPi boots up
+sudo nano /home/pi/.bashrc
+sudo python3 /home/apparmar/project.py
