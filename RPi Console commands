@@ -1,8 +1,10 @@
 ----- Stop the default GPSD if any
 sudo systemctl stop gpsd
 sudo systemctl stop gpsd.socket
------ Find Pi's IP address
+
+----- Find Pi's IP address and note down
 hostname -I
+
 ----- update the Pi as nice to follow practice
 sudo apt-get update
 sudo apt-get install gpsd gpsd-clients python-gps
